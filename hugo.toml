@@ -1,0 +1,41 @@
+baseURL = "https://kennethlayton.github.io/"
+languageCode = "en-us"
+title = "Kenneth Layton"
+theme = "PaperMod"
+[pagination]
+  paperSize = 10
+
+[params]
+  # Basic identity
+  description = "I build personal AI systems, run experiments, and write about what I learn."
+  author = "Kenneth Layton"
+
+  # Layout / behavior
+  defaultTheme = "auto"       # light/dark based on system; you can force "light"
+  disableThemeToggle = false
+  showReadingTime = true
+  showPostNavLinks = true
+  showBreadCrumbs = true
+  showCodeCopyButtons = true
+
+  # Custom CSS
+  customCSS = ["css/kenneth-custom.css"]
+
+[params.homeInfoParams]
+  Title = "Hey, I'm Kenneth 👋"
+  Content = "I build personal AI systems (like KenLM), experiment with models, and share what I learn about ML, tools, and creativity."
+
+[menu]
+
+  [[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 2
+
