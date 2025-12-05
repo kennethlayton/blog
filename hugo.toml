@@ -2,8 +2,9 @@ baseURL = "https://kennethlayton.com/"
 languageCode = "en-us"
 title = "Kenneth Layton"
 theme = "PaperMod"
+
 [pagination]
-  paperSize = 10
+  pagerSize = 10
 
 [params]
   # Basic identity
@@ -11,22 +12,31 @@ theme = "PaperMod"
   author = "Kenneth Layton"
 
   # Layout / behavior
-  defaultTheme = "auto"       # light/dark based on system; you can force "light"
+  defaultTheme = "auto"       # light/dark based on system
   disableThemeToggle = false
   showReadingTime = true
   showPostNavLinks = true
   showBreadCrumbs = true
   showCodeCopyButtons = true
-
-  # Custom CSS
-  customCSS = ["css/kenneth-custom.css"]
+  showShareButtons = false
+  
+  # Show tags on posts
+  showTags = true
 
 [params.homeInfoParams]
-  Title = "Hey, I'm Kenneth 👋"
-  Content = "I build personal AI systems (like KenLM), experiment with models, and share what I learn about ML, tools, and creativity."
+  Title = "Hey, I'm Kenneth"
+  Content = "I build personal AI systems (like KenLM), run experiments with models, and share what I learn about ML, tools, and creativity."
+
+[params.cover]
+  hiddenInList = false
+  hiddenInSingle = false
+
+# Taxonomies (tags & categories)
+[taxonomies]
+  tag = "tags"
+  category = "categories"
 
 [menu]
-
   [[menu.main]]
     identifier = "blog"
     name = "Blog"
@@ -39,3 +49,18 @@ theme = "PaperMod"
     url = "/about/"
     weight = 2
 
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+    weight = 3
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    noClasses = false

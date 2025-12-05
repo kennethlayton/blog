@@ -20,6 +20,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/index.xml" title="rss">
+<link rel="alternate" type="application/json" href="http://localhost:1313/index.json" title="json">
 <link rel="alternate" hreflang="en" href="http://localhost:1313/">
 <noscript>
     <style>
@@ -72,7 +73,14 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script>
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="http://localhost:1313/css/kenneth.css">
+
+
+
 </head>
 <body class="list" id="top">
     <header class="header">
@@ -113,16 +121,21 @@
                     <span>About</span>
                 </a>
             </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
 <main class="main"> 
 <article class="first-entry home-info">
     <header class="entry-header">
-        <h1>Hey, I&rsquo;m Kenneth 👋</h1>
+        <h1>Hey, I&rsquo;m Kenneth</h1>
     </header>
     <div class="entry-content">
-        I build personal AI systems (like KenLM), experiment with models, and share what I learn about ML, tools, and creativity.
+        I build personal AI systems (like KenLM), run experiments with models, and share what I learn about ML, tools, and creativity.
     </div>
     <footer class="entry-footer">
         <div class="social-icons" >
@@ -131,33 +144,23 @@
     </footer>
 </article>
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hello, World!
-      <span class="entry-hint" title="Draft">
-        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
-          <path
-            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
-        </svg>
-      </span>
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p></p>
-  </div>
-  <footer class="entry-footer"><span title='2025-12-02 08:11:28 -0800 PST'>December 2, 2025</span>&nbsp;·&nbsp;<span>0 min</span>&nbsp;·&nbsp;<span>Kenneth Layton</span></footer>
-  <a class="entry-link" aria-label="post link to Hello, World!" href="http://localhost:1313/posts/hello-world/"></a>
+<article class="post-entry antigravity-card"> 
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">Giving My Local LLM a Memory
+        </h2>
+    </header>
+    <div class="entry-content">
+        <p>Introduction LLMs are incredible at many things. If you stop and think about it for a moment, they’re absolutely remarkable. Through a relatively simple decoder-only transformer architecture, we’ve created what is essentially a natural-language computer that mimics intelligence. With the right orchestration, these models can act as tools, reasoning engines, or even full agents that automate entire chunks of our personal and professional lives.
+However, as powerful as they are, today’s LLMs still fall short of anything resembling human intelligence. As this paper from Google points out, LLMs lack neuroplasticity—the ability to change their structure over time in response to new experiences. In practical terms, once an LLM is trained, its memory becomes frozen. The model ends up with long-term semantic knowledge baked into its weights and a short-term working memory constrained by its context window, but no built-in mechanism for converting useful short-term experiences back into lasting knowledge.
+...</p>
+    </div>
+    <footer class="entry-footer"><span title='2025-12-04 00:00:00 +0000 UTC'>December 4, 2025</span>&nbsp;·&nbsp;<span>16 min</span>&nbsp;·&nbsp;<span>Kenneth Layton</span></footer>
+    <a class="entry-link" aria-label="post link to Giving My Local LLM a Memory" href="http://localhost:1313/posts/giving-my-local-llm-a-memory/"></a>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">Kenneth Layton</a></span> · 
-
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
+    <span>&copy; 2025 <a href="http://localhost:1313/">Kenneth Layton</a></span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
@@ -173,7 +176,7 @@
         if (scrollPosition) {
             menu.scrollLeft = parseInt(scrollPosition, 10);
         }
-        
+
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -224,7 +227,6 @@
         }
     })
 
-</script>
-</body>
+</script></body>
 
 </html>

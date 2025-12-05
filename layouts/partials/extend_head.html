@@ -1,0 +1,13 @@
+{{- /* Kenneth's Custom Head - loads playful blue-green theme */ -}}
+
+{{- /* Google Fonts for playful typography */ -}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+
+{{- /* Custom theme CSS */ -}}
+{{ $css := resources.Get "css/kenneth.css" }}
+{{ if $css }}
+<link rel="stylesheet" href="{{ $css.Permalink }}">
+{{ end }}
+

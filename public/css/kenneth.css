@@ -1,0 +1,848 @@
+/* ============================================
+   Kenneth Layton - Antigravity Theme (Refined)
+   ============================================ */
+
+/* === Color Palette === */
+:root {
+    /* Primary brand colors - Antigravity Twist */
+    --kl-blue: #2962ff;
+    /* Deep, electric blue */
+    --kl-blue-light: #448aff;
+    --kl-blue-dark: #0039cb;
+
+    --kl-green: #00e676;
+    /* Vibrant, neon green */
+    --kl-green-light: #66ffa6;
+    --kl-green-dark: #00b248;
+
+    /* Refined Selection Color */
+    --kl-highlight: #b3d8ff;
+    /* Soft blue for selection */
+
+    /* Surface Colors */
+    --kl-bg: #f8f9fa;
+    /* Slightly off-white background so cards stand out */
+    --kl-surface: #ffffff;
+    /* White cards on off-white bg */
+    --kl-surface-hover: #f1f3f4;
+    --kl-text: #202124;
+    --kl-text-secondary: #5f6368;
+    --kl-border: #dadce0;
+
+    /* Link Color (Light Mode) */
+    --kl-link: var(--kl-blue);
+
+    /* Modern Accents */
+    /* Toned down gradient for Hero */
+    --kl-gradient: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+    --kl-gradient-text: linear-gradient(135deg, var(--kl-blue) 0%, var(--kl-green) 100%);
+
+    --kl-glass: rgba(255, 255, 255, 0.9);
+    --kl-glass-border: rgba(255, 255, 255, 0.4);
+
+    /* Shadows - "Liftoff" feel (High Contrast for White-on-White) */
+    --kl-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --kl-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    /* Much stronger shadow */
+    --kl-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.2);
+
+    /* Override PaperMod defaults - Light mode */
+    --radius: 24px;
+    --gap: 32px;
+    --content-gap: 32px;
+    --nav-width: 1024px;
+    --main-width: 1024px;
+    --theme: #f8f9fa;
+    --entry: #ffffff;
+
+    /* Light mode code block background override */
+    --code-block-bg: #f1f3f4;
+    --code-bg: #e8eaed;
+}
+
+/* Dark mode adjustments */
+:root[data-theme="dark"] {
+    --kl-bg: #202124;
+    --kl-surface: #202124;
+    /* Match bg for consistency with light mode */
+    --kl-surface-hover: #2d2e31;
+    --kl-text: #e8eaed;
+    --kl-text-secondary: #bdc1c6;
+    /* Lighter gray for better contrast (WCAG AA) */
+    --kl-border: #5f6368;
+    /* Slightly lighter border for visibility on dark */
+
+    /* Lighter Link Color for Dark Mode */
+    --kl-link: #8ab4f8;
+    /* Luminous blue for dark backgrounds */
+
+    --kl-highlight: #174ea6;
+    /* Darker blue for selection in dark mode */
+
+    /* Brighter Gradient for Dark Mode Text */
+    --kl-gradient-text: linear-gradient(135deg, #8ab4f8 0%, #66ffa6 100%);
+
+    /* Dark Mode Glass - More opaque to match background */
+    --kl-glass: rgba(32, 33, 36, 0.95);
+    --kl-glass-border: rgba(255, 255, 255, 0.08);
+
+    --kl-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+    --kl-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --kl-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+
+    /* Dark mode code block - keep PaperMod's dark theme */
+    --code-block-bg: rgb(46, 46, 51);
+    --code-bg: rgb(55, 56, 62);
+}
+
+/* === Typography === */
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    letter-spacing: 0;
+    color: var(--kl-text);
+    background-color: var(--kl-bg) !important;
+    /* Enforce white background */
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--kl-text);
+}
+
+/* === Selection === */
+::selection {
+    background: var(--kl-highlight);
+    color: inherit;
+}
+
+/* === Header === */
+.nav {
+    background: var(--kl-bg);
+    border-bottom: 1px solid var(--kl-border);
+    display: flex;
+    justify-content: center;
+}
+
+.nav .logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo a {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--kl-text);
+    letter-spacing: -0.03em;
+    /* Ensure text is vertically centered */
+    display: flex;
+    align-items: center;
+}
+
+.logo a:hover {
+    color: var(--kl-link);
+}
+
+/* Theme Toggle - Perfect Circle */
+#theme-toggle {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+#theme-toggle:hover {
+    background-color: var(--kl-surface-hover);
+}
+
+#menu {
+    display: flex;
+    align-items: center;
+}
+
+#menu a {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--kl-text-secondary);
+    border-radius: 20px;
+    padding: 8px 16px;
+    transition: all 0.2s ease;
+}
+
+#menu a:hover {
+    background: var(--kl-surface-hover);
+    color: var(--kl-link);
+}
+
+#menu a.active {
+    background: rgba(41, 98, 255, 0.1);
+    color: var(--kl-link);
+}
+
+/* === Cards (Antigravity Style) === */
+.antigravity-card,
+.post-entry {
+    background: var(--kl-surface);
+    border-radius: var(--radius);
+    padding: 32px;
+    margin-bottom: 32px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--kl-border);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--kl-shadow-sm);
+}
+
+.antigravity-card:hover,
+.post-entry:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--kl-shadow-hover);
+    border-color: var(--kl-link);
+}
+
+/* Dark mode card styling */
+:root[data-theme="dark"] .antigravity-card,
+:root[data-theme="dark"] .post-entry {
+    border: 1px solid var(--kl-border);
+    box-shadow: none;
+}
+
+:root[data-theme="dark"] .antigravity-card:hover,
+:root[data-theme="dark"] .post-entry:hover {
+    box-shadow: var(--kl-shadow);
+}
+
+.antigravity-card .entry-header h2 {
+    font-size: 1.75rem;
+    margin-bottom: 12px;
+    transition: color 0.2s ease;
+}
+
+.antigravity-card:hover .entry-header h2 {
+    background: var(--kl-gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.antigravity-card .entry-content {
+    color: var(--kl-text-secondary);
+    font-size: 1.05rem;
+    margin-bottom: 24px;
+}
+
+/* Read More Link (Implicit in card, but styling the entry-link) */
+.entry-link {
+    z-index: 10;
+}
+
+/* === Hero Section (Home Info) === */
+.first-entry {
+    background: transparent;
+    box-shadow: none;
+    padding: 64px 0;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--kl-border);
+    text-align: center;
+    /* Optional: Center align hero text for impact */
+}
+
+.first-entry:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.first-entry .entry-header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 24px;
+    color: var(--kl-text);
+    /* Solid color for cleaner look */
+    background: none;
+    -webkit-text-fill-color: initial;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.first-entry .entry-content {
+    color: var(--kl-text-secondary);
+    font-size: 1.35rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* === Single Post === */
+.post-hero {
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.post-title {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--kl-text);
+    /* Solid color for cleaner look */
+    background: none;
+    -webkit-text-fill-color: initial;
+}
+
+.post-description {
+    font-size: 1.25rem;
+    color: var(--kl-text-secondary);
+    max-width: 800px;
+    margin: 0 auto 24px;
+}
+
+.post-meta {
+    color: var(--kl-text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.post-content {
+    font-size: 1.125rem;
+    line-height: 1.8;
+}
+
+.post-content h2 {
+    font-size: 2rem;
+    margin-top: 48px;
+    margin-bottom: 24px;
+    color: var(--kl-text);
+}
+
+.post-content h3 {
+    font-size: 1.5rem;
+    margin-top: 32px;
+    margin-bottom: 16px;
+}
+
+.post-content a {
+    color: var(--kl-link);
+    text-decoration: none;
+    border-bottom: 2px solid rgba(41, 98, 255, 0.2);
+    transition: all 0.2s ease;
+}
+
+.post-content a:hover {
+    border-bottom-color: var(--kl-green);
+}
+
+    /* === Code Blocks === */
+    .post-content pre {
+    background: var(--code-block-bg) !important;
+        border-radius: 16px;
+        padding: 24px;
+        margin: 32px 0;
+        box-shadow: var(--kl-shadow-sm);
+        border: 1px solid var(--kl-border);
+    }
+
+.post-content code {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.9em;
+}
+
+.post-content pre code {
+    background: transparent !important;
+    color: var(--kl-text);
+}
+
+/* Light mode: Override PaperMod's dark Chroma theme */
+:root:not([data-theme="dark"]) .chroma {
+    background-color: var(--code-block-bg) !important;
+    color: #24292e;
+}
+
+:root:not([data-theme="dark"]) .highlight {
+    background: var(--code-block-bg) !important;
+}
+
+:root:not([data-theme="dark"]) .post-content pre code {
+    color: #24292e;
+}
+
+/* Light Mode Syntax Highlighting (GitHub Light inspired) */
+:root:not([data-theme="dark"]) .chroma .k,
+:root:not([data-theme="dark"]) .chroma .kc,
+:root:not([data-theme="dark"]) .chroma .kd,
+:root:not([data-theme="dark"]) .chroma .kn,
+:root:not([data-theme="dark"]) .chroma .kp,
+:root:not([data-theme="dark"]) .chroma .kr,
+:root:not([data-theme="dark"]) .chroma .kt,
+:root:not([data-theme="dark"]) .chroma .nt {
+        color: #d73a49;
+        font-weight: 600;
+    }
+
+:root:not([data-theme="dark"]) .chroma .n,
+:root:not([data-theme="dark"]) .chroma .nx,
+:root:not([data-theme="dark"]) .chroma .py,
+:root:not([data-theme="dark"]) .chroma .nv,
+:root:not([data-theme="dark"]) .chroma .vc,
+:root:not([data-theme="dark"]) .chroma .vg,
+:root:not([data-theme="dark"]) .chroma .vi {
+        color: #24292e;
+    }
+
+:root:not([data-theme="dark"]) .chroma .nf,
+:root:not([data-theme="dark"]) .chroma .fm,
+:root:not([data-theme="dark"]) .chroma .nc,
+:root:not([data-theme="dark"]) .chroma .no,
+:root:not([data-theme="dark"]) .chroma .nd,
+:root:not([data-theme="dark"]) .chroma .ni,
+:root:not([data-theme="dark"]) .chroma .ne,
+:root:not([data-theme="dark"]) .chroma .nn {
+        color: #6f42c1;
+    }
+
+:root:not([data-theme="dark"]) .chroma .s,
+:root:not([data-theme="dark"]) .chroma .sa,
+:root:not([data-theme="dark"]) .chroma .sb,
+:root:not([data-theme="dark"]) .chroma .sc,
+:root:not([data-theme="dark"]) .chroma .dl,
+:root:not([data-theme="dark"]) .chroma .sd,
+:root:not([data-theme="dark"]) .chroma .s2,
+:root:not([data-theme="dark"]) .chroma .se,
+:root:not([data-theme="dark"]) .chroma .sh,
+:root:not([data-theme="dark"]) .chroma .si,
+:root:not([data-theme="dark"]) .chroma .sx,
+:root:not([data-theme="dark"]) .chroma .sr,
+:root:not([data-theme="dark"]) .chroma .s1,
+:root:not([data-theme="dark"]) .chroma .ss {
+        color: #032f62;
+    }
+
+:root:not([data-theme="dark"]) .chroma .m,
+:root:not([data-theme="dark"]) .chroma .mb,
+:root:not([data-theme="dark"]) .chroma .mf,
+:root:not([data-theme="dark"]) .chroma .mh,
+:root:not([data-theme="dark"]) .chroma .mi,
+:root:not([data-theme="dark"]) .chroma .il,
+:root:not([data-theme="dark"]) .chroma .mo {
+        color: #005cc5;
+    }
+
+:root:not([data-theme="dark"]) .chroma .c,
+:root:not([data-theme="dark"]) .chroma .ch,
+:root:not([data-theme="dark"]) .chroma .cm,
+:root:not([data-theme="dark"]) .chroma .c1,
+:root:not([data-theme="dark"]) .chroma .cs,
+:root:not([data-theme="dark"]) .chroma .cp,
+:root:not([data-theme="dark"]) .chroma .cpf {
+        color: #6a737d;
+        font-style: italic;
+    }
+
+:root:not([data-theme="dark"]) .chroma .o,
+:root:not([data-theme="dark"]) .chroma .ow {
+        color: #d73a49;
+        font-weight: bold;
+    }
+
+    /* Inline code */
+.post-content p code,
+.post-content li code {
+        background: rgba(41, 98, 255, 0.1);
+        color: var(--kl-blue-dark);
+        padding: 2px 6px;
+        border-radius: 6px;
+    }
+
+:root[data-theme="dark"] .post-content p code,
+:root[data-theme="dark"] .post-content li code {
+        background: rgba(41, 98, 255, 0.2);
+        color: var(--kl-blue-light);
+    }
+
+    /* === Footer === */
+    .footer {
+        padding: 48px 0;
+        margin-top: 64px;
+        color: var(--kl-text-secondary);
+        text-align: center;
+    }
+
+    .footer a {
+        color: var(--kl-text);
+        font-weight: 500;
+    }
+
+    .footer a:hover {
+        color: var(--kl-link);
+    }
+
+    /* === Buttons & Pagination === */
+.pagination a {
+        background: var(--kl-surface);
+        color: var(--kl-text);
+        border-radius: 24px;
+        padding: 12px 24px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        display: inline-block;
+        text-decoration: none;
+        box-shadow: var(--kl-shadow-sm);
+    border: 1px solid var(--kl-border);
+    }
+
+.pagination a:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--kl-shadow-hover);
+    border-color: var(--kl-link);
+    }
+
+    /* Specific styles for Post Nav (Prev/Next on single pages) */
+    .paginav {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-top: 48px !important;
+    padding: 24px 0 0 0 !important;
+    border: none !important;
+    border-top: 1px solid var(--kl-border) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    gap: 24px !important;
+    line-height: 1.4 !important;
+    }
+
+    .paginav a {
+    display: inline-flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+    padding: 0 !important;
+    color: var(--kl-text-secondary) !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    width: auto !important;
+}
+
+.paginav a:hover {
+    color: var(--kl-link) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.paginav .prev,
+.paginav .next {
+    width: auto !important;
+}
+
+.paginav .prev {
+    align-items: flex-start !important;
+    }
+
+    .paginav .next {
+    margin-left: auto !important;
+    text-align: right !important;
+    align-items: flex-end !important;
+    }
+
+    .paginav .title {
+    display: block !important;
+    font-size: 0.75rem !important;
+    color: var(--kl-text-secondary) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    font-weight: 600 !important;
+    }
+
+    .paginav a:hover .title {
+    color: var(--kl-link) !important;
+}
+
+.paginav span:not(.title) {
+    color: var(--kl-text) !important;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.paginav a:hover span:not(.title) {
+    color: var(--kl-link) !important;
+}
+
+.paginav span:hover:not(.title) {
+    box-shadow: none !important;
+    }
+
+    /* === Tags === */
+.post-tags a,
+.terms-tags a {
+        background: rgba(41, 98, 255, 0.1);
+        color: var(--kl-link);
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+
+.post-tags a:hover,
+.terms-tags a:hover {
+        background: var(--kl-link);
+        color: white;
+    }
+
+/* Tags page layout */
+.terms-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 0;
+    list-style: none;
+}
+
+.terms-tags li {
+    margin: 0;
+}
+
+/* === Table of Contents === */
+.toc details summary,
+.toc details[open] summary {
+    cursor: pointer !important;
+}
+
+/* === Animations === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main {
+    animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* === Links & Buttons === */
+a {
+    color: var(--kl-link);
+    transition: color 0.25s ease, transform 0.2s ease;
+}
+
+a:hover {
+    color: var(--kl-green);
+}
+
+/* ============================================
+   RESPONSIVE STYLES
+   ============================================ */
+
+/* Tablet (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    :root {
+        --radius: 16px;
+        --gap: 20px;
+        --content-gap: 20px;
+    }
+
+    /* Hero section */
+    .first-entry {
+        padding: 40px 0;
+        margin-bottom: 32px;
+    }
+
+    .first-entry .entry-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .first-entry .entry-content {
+        font-size: 1.1rem;
+    }
+
+    /* Post title */
+    .post-title {
+        font-size: 2rem;
+    }
+
+    .post-content h2 {
+        font-size: 1.5rem;
+        margin-top: 32px;
+    }
+
+    .post-content h3 {
+        font-size: 1.25rem;
+    }
+
+    /* Cards */
+    .antigravity-card,
+    .post-entry {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .antigravity-card .entry-header h2,
+    .post-entry .entry-header h2 {
+        font-size: 1.4rem;
+    }
+
+    /* Navigation */
+    #menu a {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+
+    .logo a {
+        font-size: 1.25rem;
+    }
+
+    /* Paginav */
+    .paginav {
+        gap: 16px !important;
+    }
+
+    .paginav span:not(.title) {
+        max-width: 180px;
+    }
+}
+
+/* Mobile (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    :root {
+        --radius: 12px;
+        --gap: 16px;
+        --content-gap: 16px;
+    }
+
+    /* Hero section */
+    .first-entry {
+        padding: 32px 0;
+        margin-bottom: 24px;
+    }
+
+    .first-entry .entry-header h1 {
+        font-size: 2rem;
+    }
+
+    .first-entry .entry-content {
+        font-size: 1rem;
+    }
+
+    /* Post title */
+    .post-title {
+        font-size: 1.75rem;
+    }
+
+    .post-description {
+        font-size: 1rem;
+    }
+
+    .post-content {
+        font-size: 1rem;
+    }
+
+    .post-content h2 {
+        font-size: 1.35rem;
+        margin-top: 28px;
+        margin-bottom: 16px;
+    }
+
+    .post-content h3 {
+        font-size: 1.15rem;
+    }
+
+    /* Cards */
+    .antigravity-card,
+    .post-entry {
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+
+    .antigravity-card .entry-header h2,
+    .post-entry .entry-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .antigravity-card .entry-content,
+    .post-entry .entry-content {
+        font-size: 0.95rem;
+    }
+
+    /* Navigation */
+    .nav {
+        padding: 0 12px;
+    }
+
+    #menu {
+        gap: 4px;
+    }
+
+    #menu a {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .logo a {
+        font-size: 1.1rem;
+    }
+
+    /* Paginav - stack vertically */
+    .paginav {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+    }
+
+    .paginav .prev,
+    .paginav .next {
+        text-align: left !important;
+        align-items: flex-start !important;
+    }
+
+    .paginav .next {
+        margin-left: 0 !important;
+    }
+
+    .paginav span:not(.title) {
+        max-width: 100%;
+    }
+
+    /* Tags */
+    .post-tags a,
+    .terms-tags a {
+        padding: 5px 12px;
+        font-size: 0.8rem;
+    }
+
+    .terms-tags {
+        gap: 8px;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 32px 0;
+        margin-top: 40px;
+        font-size: 0.85rem;
+    }
+
+    /* Table of Contents */
+    .toc {
+        font-size: 0.9rem;
+    }
+}
